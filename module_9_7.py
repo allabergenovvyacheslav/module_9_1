@@ -23,19 +23,32 @@
 # Функция is_prime должна возвращать wrapper
 # @is_prime - декоратор для функции sum_three
 
+import time
+
+
 def is_prime(func):
     def wrapper(*args):
+        time.sleep(1.0)
         res = func(*args)
         if res <= 1:
             return f'число {res} не определяется'
         for x in range(2, int(res ** 0.5) + 1):
             if res % x == 0:
-                print('Составное')
+                print(f'Составное')
                 break
         else:
-            print('Простое')
+            print(f'Простое')
         return res
+
     return wrapper
+
+
+@is_prime
+def mul_three(*args):
+    x = 1
+    for num in args:
+        x *= num
+    return x
 
 
 @is_prime
@@ -58,3 +71,7 @@ result5 = sum_three(2, 3, 6, 13, 198)
 print(result5)
 result6 = sum_three(2, 3, 6, -9)
 print(result6)
+result7 = mul_three(2, 2, 2)
+print(result7)
+result8 = mul_three(5, 5, 5)
+print(result8)
