@@ -26,17 +26,14 @@
 def is_prime(func):
     def wrapper(*args):
         res = func(*args)
-        if res == 1:
-            print('Число 1 не простое и не составное')
-        if res <= 0:
-            print('Отрицательные числа и ноль не определяются')
-        for x in range(2, res):
+        if res <= 1:
+            return f'число {res} не определяется'
+        for x in range(2, int(res ** 0.5) + 1):
             if res % x == 0:
                 print('Составное')
                 break
-            else:
-                print('Простое')
-                break
+        else:
+            print('Простое')
         return res
     return wrapper
 
@@ -53,7 +50,11 @@ result = sum_three(2, 3, 6)
 print(result)
 result2 = sum_three(2, 3, 6, 13, -23)
 print(result2)
-result3 = sum_three(2, 3, 6, 13)
+result3 = sum_three(2, 3, 6, 22)
 print(result3)
 result4 = sum_three(2, 3, 6, 13, -24)
 print(result4)
+result5 = sum_three(2, 3, 6, 13, 198)
+print(result5)
+result6 = sum_three(2, 3, 6, -9)
+print(result6)
