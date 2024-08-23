@@ -22,3 +22,18 @@ def fibonacci(n):
 x = fibonacci(n=10)
 for elem in x:
     print(elem)
+
+
+"""Фибоначи_2
+"""
+def fibonacci_2():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+
+for elem in fibonacci_2():
+    print(elem)
+    if elem > 10 ** 5:
+        break
