@@ -23,12 +23,12 @@
 # Функция is_prime должна возвращать wrapper
 # @is_prime - декоратор для функции sum_three
 
-import time
+#import time
 
 
 def is_prime(func):
     def wrapper(*args):
-        time.sleep(1.0)
+        #time.sleep(1.0)
         res = func(*args)
         if res <= 1:
             return f'число {res} не определяется'
